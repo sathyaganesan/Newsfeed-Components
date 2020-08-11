@@ -101,9 +101,20 @@ const data = [
     {three separate paragraph elements}
 
     <span class="expandButton">+</span>
-  </div>
+  </div> */
+  function articleMaker() {
+    const articleDiv = document.createElement('div');
+    const articleTitle = document.createElement('h2');
+    const articleP1 = document.createElement('p');
+    const articleP2 = document.createElement('p');
+    const articleP3 = document.createElement('p');
+    const expandButtom = document.createElement('span');
 
-  Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
+    
+    console.log(articleDiv);
+  }
+
+  /*Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
   Step 3: Don't forget to return something from your function!
