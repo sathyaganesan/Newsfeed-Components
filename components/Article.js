@@ -86,7 +86,7 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  }, {title: 'Sathya Ganesan', date: 'jan 8, 1983', firstParagraph: 'asd asdfsad asdfdf asdf af a', secondParagraph: 'hgfgh thfgh dgdfg dgdfg dfsf', thirdParagraph: 'ytuytuj jhjk sfsdf sfd sdsd'}
 ];
 
 /*
@@ -102,26 +102,65 @@ const data = [
 
     <span class="expandButton">+</span>
   </div> */
-  function articleMaker() {
+
+  let mainDiv = document.querySelector('.articles');
+
+
+  function articleMaker(newArticle) {
+    
     const articleDiv = document.createElement('div');
     const articleTitle = document.createElement('h2');
+    const doA = document.createElement('p');
     const articleP1 = document.createElement('p');
     const articleP2 = document.createElement('p');
     const articleP3 = document.createElement('p');
-    const expandButtom = document.createElement('span');
+    const expandButton = document.createElement('span');
+
+    articleDiv.appendChild(articleTitle);
+    articleDiv.appendChild(doA);
+    articleDiv.appendChild(articleP1);
+    articleDiv.appendChild(articleP2);
+    articleDiv.appendChild(articleP3);
+    articleDiv.appendChild(expandButton);
+
+    articleDiv.classList.add('article');
+    doA.classList.add('date');
+    expandButton.classList.add('expandButton');
+
+    articleTitle.textContent = newArticle.title;
+    doA.textContent = newArticle.date;
+    articleP1.textContent = newArticle.firstParagraph;
+    articleP2.textContent = newArticle.secondParagraph;
+    articleP3.textContent = newArticle.thirdParagraph;
+    expandButton.textContent = '+';
+
+    // step 2:
+    expandButton.addEventListener('click', () => {
+      articleDiv.classList.toggle('article-open');
+    });
 
     
-    console.log(articleDiv);
+
+    // step 3:
+    return articleDiv;
+  
   }
 
+  // step 4:
+  data.forEach(newArticle => {
+    mainDiv.appendChild(articleMaker(newArticle));
+  });
+
   /*Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
-  This listener should toggle the class 'article-open' on div.article.
+   This listener should toggle the class 'article-open' on div.article. */
 
-  Step 3: Don't forget to return something from your function!
 
-  Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
-  to create a div.article element and append it to the DOM inside div.articles (see index.html).
+//   Step 3: Don't forget to return something from your function!
 
-  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
-  Refresh the page to see the new article.
-*/
+//   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
+//   to create a div.article element and append it to the DOM inside div.articles (see index.html).
+
+//   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
+//   Refresh the page to see the new article.
+// */
+
